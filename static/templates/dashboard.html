@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Smart Traffic System</title>
+    <style>
+        body {
+            background: url('/static/Media.jpeg') no-repeat center center fixed;
+
+            background-color: #111;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+        .btn-group {
+            margin-bottom: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            margin: 0 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .btn-primary {
+            background-color: #2196F3;
+            color: white;
+        }
+        .btn-dark {
+            background-color: #2c2c2c;
+            color: rgb(255, 255, 255);
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: none;
+            margin-right: 10px;
+        }
+        .form-group {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<h1 class="highlighted-title">SMART TRAFFIC SURVEILLANCE<br>AND CRIME-TRACKING SYSTEM</h1>
+</body>
+
+<style>
+  .highlighted-title {
+    font-weight: bold;
+    background-color: rgba(0, 123, 255, 0.2); /* translucent blue */
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+</style>
+<div class="btn-group">
+    <form action="{{ url_for('dashboard') }}" method="get" style="display: inline;">
+        <button class="btn btn-primary">Analyzer</button>
+    </form>
+    <form action="{{ url_for('tracker') }}" method="get" style="display: inline;">
+        <button class="btn btn-dark">Tracker</button>
+    </form>
+</div>
+
+<!-- Form to Start Analysis -->
+<form action="{{ url_for('start_analysis') }}" method="post" style="margin-top: 30px;">
+    <div class="form-group">
+        <label for="stream_url">Video URL:</label><br><br>
+        <input type="text" name="stream_url" placeholder="Enter YouTube Video URL" required>
+        <button type="submit" class="btn btn-primary">Analyze</button>
+    </div>
+</form>
+
+<!-- Separate Form to Stop Analysis -->
+<form action="{{ url_for('stop_analysis') }}" method="post" style="margin-top: 10px;">
+    <button type="submit" class="btn btn-danger">Stop Analysis</button>
+</form>
+
